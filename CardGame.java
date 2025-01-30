@@ -1,4 +1,8 @@
-package cardGame;
+//Felix Olieveira-Machado
+//Jose Delgadillo
+//01-30-25
+
+//package cardGame;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -29,7 +33,11 @@ public class CardGame {
 					Integer.parseInt(fields[2].trim()), fields[3]);
 			deckOfCards.add(newCard);	
 		}
-
+		//Make more random
+		shuffle();
+		shuffle();
+		shuffle();
+		shuffle();
 		shuffle();
 
 		//for(Card c: deckOfCards)
