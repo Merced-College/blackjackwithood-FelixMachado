@@ -39,6 +39,7 @@ public class CardGame {
 		shuffle();
 		shuffle();
 		shuffle();
+		
 
 		//for(Card c: deckOfCards)
 			//System.out.println(c);
@@ -62,14 +63,15 @@ public class CardGame {
 		for (int i = 0; i < deckOfCards.size(); i++) {
 			int index = (int) (Math.random()*deckOfCards.size());
 			Card c = deckOfCards.remove(index);
-			//System.out.println("c is " + c + ", index is " + index);
+			System.out.println("c is " + c + ", index is " + index);
 			deckOfCards.add(c);
 		}
 	}
 
 	//check for 2 of a kind in the players hand
 	public static boolean checkFor2Kind() {
-
+		//Adding a Counter that Counts Player pairs
+		int playerPairs = 0;
 		int count = 0;
 		for(int i = 0; i < playerCards.size() - 1; i++) {
 			Card current = playerCards.get(i);
@@ -77,12 +79,13 @@ public class CardGame {
 			
 			for(int j = i+1; j < playerCards.size(); j++) {
 				next = playerCards.get(j);
-				//System.out.println(" comparing " + current);
-				//System.out.println(" to " + next);
+				System.out.println(" comparing " + current);
+				System.out.println(" to " + next);
 				if(current.equals(next))
 					count++;
 			}//end of inner for
 			if(count == 1)
+				playerPairs++
 				return true;
 
 		}//end outer for
