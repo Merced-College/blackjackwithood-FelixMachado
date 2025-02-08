@@ -33,20 +33,14 @@ public class CardGame {
 					Integer.parseInt(fields[2].trim()), fields[3]);
 			deckOfCards.add(newCard);	
 		}
-		//Make more random
-		shuffle();
-		shuffle();
-		shuffle();
-		shuffle();
-		shuffle();
 		
-
 		//for(Card c: deckOfCards)
 			//System.out.println(c);
 
 		//deal the player 5 cards
-		for(int i = 0; i < 4; i++) {
-			playerCards.add(deckOfCards.remove(i));
+		//Changd the i to a 0 to continually deal cards without removing any
+		for(int i = 0; i < 5; i++) {
+			playerCards.add(deckOfCards.remove(0));
 		}
 		
 		System.out.println("players cards");
@@ -58,13 +52,10 @@ public class CardGame {
 	}//end main
 
 	public static void shuffle() {
-
-		//shuffling the cards by deleting and reinserting
-		for (int i = 0; i < deckOfCards.size(); i++) {
-			int index = (int) (Math.random()*deckOfCards.size());
-			Card c = deckOfCards.remove(index);
-			System.out.println("c is " + c + ", index is " + index);
-			deckOfCards.add(c);
+        // Shuffles cards without deleting and reinserting
+		Collections.shuffle(deckOfCards);
+		Collections.shuffle(deckOfCards);
+		Collections.shuffle(deckOfCards);
 		}
 	}
 
@@ -72,10 +63,12 @@ public class CardGame {
 	public static boolean checkFor2Kind() {
 		//Adding a Counter that Counts Player pairs
 		int playerPairs = 0;
-		int count = 0;
+		
 		for(int i = 0; i < playerCards.size() - 1; i++) {
 			Card current = playerCards.get(i);
 			Card next = playerCards.get(i+1);
+
+			int count =0;
 			
 			for(int j = i+1; j < playerCards.size(); j++) {
 				next = playerCards.get(j);
@@ -84,12 +77,14 @@ public class CardGame {
 				if(current.equals(next))
 					count++;
 			}//end of inner for
-			if(count == 1)
-				playerPairs++
-				return true;
+			if(count == 1){
+			//Added a player count to count the amount of times a player gets a pair
+				playerPairs++;
+				System.out.println(playerPairs);
+				//removed return true
+			}
 
 		}//end outer for
-		return false;
-		
+		//Removed the return false
 	}
 }//end class
